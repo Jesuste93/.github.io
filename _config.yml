@@ -2,3 +2,5 @@ theme: jekyll-theme-minimal
 title: Alma 84 - Carta de Verano
 description: Carta del Bar Alma 84
 show_downloads: false
+github:
+  is_project_page: false
