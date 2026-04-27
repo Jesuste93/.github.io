@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carta de Verano del Bar Alma 84">
+    <meta name="theme-color" content="#1B4332">
+    <title>Alma 84 - Carta de Verano</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #FEFAE0 0%, #DDB892 50%, #FEFAE0 100%);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .floating-deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.08;
+            font-size: 80px;
+            animation: floatAround 20s ease-in-out infinite;
+        }
+        
+        .deco1 { top: 10%; left: 5%; }
+        .deco2 { top: 60%; right: 5%; animation-delay: -5s; }
+        .deco3 { bottom: 10%; left: 15%; animation-delay: -10s; }
+        .deco4 { top: 30%; right: 15%; animation-delay: -15s; }
+        
+        @keyframes floatAround {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(10px) rotate(-3deg); }
+            75% { transform: translateY(-10px) rotate(2deg); }
+        }
+        
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .logo-container::before,
+        .logo-container::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D4A373;
+            font-size: 24px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .logo-container::before { left: -40px; }
+        .logo-container::after { right: -40px; animation-delay: 1s; }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateY(-50%) scale(1.3); }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 3.5em;
+            color: #1B4332;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            font-size: 1.1em;
+            color: #D4A373;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+        
+        .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4A373, transparent);
+            margin: 20px auto;
+        }
+        
+        .menu-container {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 8px 30px rgba(27, 67, 50, 0.2);
+        }
+        
+        .accordion-header {
+            background: linear-gradient(135deg, #1B4332, #2D6A4F);
+            color: #FEFAE0;
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #2D6A4F, #40916C);
+        }
+        
+        .accordion-header:focus {
+            outline: 3px solid #D4A373;
+            outline-offset: -3px;
+        }
+        
+        .accordion-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        
+        .accordion-header-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .accordion-header .icon-left {
+            font-size: 1.4em;
+        }
+        
+        .accordion-header .arrow {
+            font-size: 1.2em;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #D4A373;
+            flex-shrink: 0;
+        }
+        
+        .accordion-item.active .accordion-header .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            background: rgba(254, 250, 224, 0.95);
+            backdrop-filter: blur(10px);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 3000px;
+        }
+        
+        .content-inner {
+            padding: 25px 30px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15em;
+            color: #1B4332;
+            padding: 10px 0 8px;
+            border-bottom: 2px solid #D4A373;
+            margin-bottom: 12px;
+            margin-top: 20px;
+            display: block;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 5px;
+            border-bottom: 1px dotted rgba(27, 67, 50, 0.15);
+            transition: background 0.2s ease;
+            gap: 10px;
+        }
+        
+        .menu-item:hover {
+            background: rgba(212, 163, 115, 0.1);
+            border-radius: 6px;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-size: 0.95em;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .item-description {
+            font-size: 0.82em;
+            color: #777;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        
+        .item-prices {
+            display: flex;
+            gap: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: #1B4332;
+            font-size: 0.95em;
+            min-width: 55px;
+            text-align: right;
+        }
+        
+        .price-header {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 5px 5px 8px;
+            border-bottom: 2px solid #1B4332;
+            margin-bottom: 8px;
+        }
+        
+        .price-header span {
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #1B4332;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 55px;
+            text-align: right;
+        }
+        
+        .allergens {
+            display: flex;
+            gap: 4px;
+            margin-left: 0;
+            flex-wrap: wrap;
+            margin-top: 3px;
+        }
+        
+        .allergen-badge {
+            background: #D4A373;
+            color: #fff;
+            font-size: 0.7em;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            title: attr(data-allergen);
+        }
+        
+        .allergen-legend {
+            background: rgba(27, 67, 50, 0.05);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 20px;
+        }
+        
+        .allergen-legend h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1em;
+            color: #1B4332;
+            margin-bottom: 12px;
+        }
+        
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+        }
+        
+        .allergen-item {
+            font-size: 0.85em;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .allergen-item .num {
+            background: #D4A373;
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .note {
+            text-align: center;
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 15px;
+            padding: 12px;
+            border-top: 1px solid rgba(212, 163, 115, 0.3);
+            font-style: italic;
+        }
+        
+        .note-gluten {
+            background: rgba(27, 67, 50, 0.05);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.88em;
+            color: #1B4332;
+        }
+        
+        .terrace-note {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, rgba(212, 163, 115, 0.15), rgba(212, 163, 115, 0.05));
+            border-radius: 10px;
+            font-size: 0.88em;
+            color: #1B4332;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer .divider {
+            margin-bottom: 15px;
+        }
+        
+        footer p {
+            font-size: 0.85em;
+            color: #888;
+            margin: 4px 0;
+        }
+        
+        footer .iva {
+            font-size: 0.9em;
+            color: #1B4332;
+            font-weight: 400;
+        }
+        
+        footer .terrace-global {
+            color: #A0522D;
+            font-style: italic;
+            font-size: 0.92em;
+            margin-top: 10px;
+        }
+        
+        footer .lastupdate {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 15px;
+        }
+        
+        /* Tablet */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            .accordion-header { padding: 18px 25px; }
+            .accordion-header h2 { font-size: 1.3em; }
+            .content-inner { padding: 20px 25px; }
+            .allergen-grid { grid-template-columns: 1fr; gap: 6px 10px; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 500px) {
+            h1 { font-size: 2.2em; letter-spacing: 1px; }
+            .subtitle { font-size: 0.95em; letter-spacing: 4px; }
+            .logo-container::before { left: -30px; font-size: 18px; }
+            .logo-container::after { right: -30px; font-size: 18px; }
+            .accordion-header { padding: 15px 20px; }
+            .accordion-header h2 { font-size: 1.1em; }
+            .content-inner { padding: 15px 15px; }
+            .item-prices { gap: 15px; }
+            .allergen-grid { grid-template-columns: 1fr; }
+            .menu-item { padding: 10px 3px; }
+            .price-header { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-deco deco1">☀</div>
+    <div class="floating-deco deco2">🌿</div>
+    <div class="floating-deco deco3">✦</div>
+    <div class="floating-deco deco4">🍃</div>
+    
+    <header>
+        <div class="logo-container">
+            <h1>Alma 84</h1>
+        </div>
+        <p class="subtitle">☀ Carta de Verano ☀</p>
+        <div class="divider"></div>
+    </header>
+    
+    <main class="menu-container">
+        <!-- DESAYUNOS -->
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="desayunos">
+                <div class="accordion-header-content">
+                    <span class="icon-left">🍳</span>
+                    <h2>Desayunos</h2>
+                </div>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content" id="desayunos">
+                <div class="content-inner">
+                    <div class="price-header">
+                        <span>Pequeño</span>
+                        <span>Normal</span>
+                    </div>
+                    
+                    <h3 class="section-title">Churros</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Churros con chocolate</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,50€</span>
+                            <span class="price">6,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Churros solos</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">2,50€</span>
+                            <span class="price">3,50€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Tostadas</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tostada con tomate y aceite</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,80€</span>
+                            <span class="price">2,30€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tostada con jamón serrano</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">3,50€</span>
+                            <span class="price">4,20€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tostada con queso y jamón</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,00€</span>
+                            <span class="price">4,80€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Bebidas</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Café</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,20€</span>
+                            <span class="price">1,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Cortado</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,50€</span>
+                            <span class="price">1,80€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Café con leche</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,60€</span>
+                            <span class="price">2,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Té o infusión</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,20€</span>
+                            <span class="price">1,50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOCADILLOS -->
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="bocadillos">
+                <div class="accordion-header-content">
+                    <span class="icon-left">🥖</span>
+                    <h2>Bocadillos</h2>
+                </div>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content" id="bocadillos">
+                <div class="content-inner">
+                    <div class="note-gluten">⚠️ Todos nuestros bocadillos contienen gluten</div>
+                    
+                    <h3 class="section-title">Jamón y Queso</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Jamón Serrano</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">3,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Jamón York y Queso</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Queso de cabra con jamón</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,50€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Embutidos</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Lomo Ibérico</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Chorizo de Salamanca</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">4,00€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Especiales</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Montadito Alma 84</div>
+                            <div class="item-description">Jamón ibérico, queso de cabra y tomate</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">5,50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RACIONES -->
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="raciones">
+                <div class="accordion-header-content">
+                    <span class="icon-left">🍽</span>
+                    <h2>Raciones</h2>
+                </div>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content" id="raciones">
+                <div class="content-inner">
+                    <h3 class="section-title">Frituras</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tabla de quesos artesanales</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">12,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tabla de jamones ibéricos</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">14,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tabla Alma 84 (combinada)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">16,00€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Calientes</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Croquetas de jamón (6 piezas)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Huevo">3</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">6,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Croquetas de queso (6 piezas)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Huevo">3</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">6,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Croquetas mixtas (6 piezas)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Huevo">3</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">7,00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Tabla de croquetas variadas</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                                <span class="allergen-badge" data-allergen="Huevo">3</span>
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">8,50€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Ensaladas</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Ensalada de verano</div>
+                            <div class="item-description">Lechuga, tomate, pepino, cebolla y vinagreta</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">5,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Ensalada con queso de cabra</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Lácteos">7</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">7,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Ensalada con jamón ibérico</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">8,00€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BEBIDAS -->
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="bebidas">
+                <div class="accordion-header-content">
+                    <span class="icon-left">🍹</span>
+                    <h2>Bebidas</h2>
+                </div>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content" id="bebidas">
+                <div class="content-inner">
+                    <h3 class="section-title">Vinos de la Casa</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Vino Blanco Joven</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">2,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Vino Tinto Joven</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">2,50€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Cervezas</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Caña (0,3L)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,80€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Cerveza sin alcohol (0,3L)</div>
+                            <div class="allergens">
+                                <span class="allergen-badge" data-allergen="Gluten">1</span>
+                            </div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,80€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Refrescos</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Refresco/Agua</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">1,50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Zumo natural</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">2,50€</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Cockteles Especiales</h3>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <div class="item-name">Sangría de la Casa</div>
+                        </div>
+                        <div class="item-prices">
+                            <span class="price">3,50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- ALLERGEN LEGEND -->
+    <div class="menu-container">
+        <div class="allergen-legend">
+            <h3>Información sobre Alérgenos</h3>
+            <div class="allergen-grid">
+                <div class="allergen-item">
+                    <span class="num">1</span>
+                    <span>Gluten</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">2</span>
+                    <span>Cacahuetes</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">3</span>
+                    <span>Huevo</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">4</span>
+                    <span>Pescado</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">5</span>
+                    <span>Frutos secos</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">6</span>
+                    <span>Soja</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">7</span>
+                    <span>Lácteos</span>
+                </div>
+                <div class="allergen-item">
+                    <span class="num">8</span>
+                    <span>Moluscos</span>
+                </div>
+            </div>
+            <p class="note">Si tiene alergias o intolerancias alimentarias, consulte con nuestro personal.</p>
+        </div>
+        
+        <div class="terrace-note">☀ En terraza se aplicará un suplemento del 10%</div>
+    </div>
+    
+    <footer>
+        <div class="divider"></div>
+        <p class="iva">IVA Incluido · Pregunte por nuestras sugerencias del día</p>
+        <p class="terrace-global">☀ En terraza se aplicará un suplemento del 10%</p>
+        <p class="lastupdate">Actualizado: Abril 2026</p>
+    </footer>
+    
+    <script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+            });
+            
+            // Open clicked accordion if it wasn't active
+            if (!wasActive) {
+                item.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Add click event listeners
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                toggleAccordion(this);
+            });
+            
+            // Keyboard accessibility
+            header.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleAccordion(this);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
