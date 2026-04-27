@@ -1,10 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta http-equiv="refresh" content="0; url='./carta_alma84.html'">
-    <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido a Alma 84 - Bar con Carta de Verano">
+    <meta name="theme-color" content="#1B4332">
+    <title>Alma 84 - Inicio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #FEFAE0 0%, #DDB892 50%, #FEFAE0 100%);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            background: rgba(254, 250, 224, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(27, 67, 50, 0.15);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 3em;
+            color: #1B4332;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #D4A373;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        
+        .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4A373, transparent);
+            margin: 20px auto 30px;
+        }
+        
+        p {
+            font-size: 1.05em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1B4332, #2D6A4F);
+            color: #FEFAE0;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2D6A4F, #40916C);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(27, 67, 50, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(212, 163, 115, 0.9);
+            color: #FEFAE0;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 163, 115, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 163, 115, 0.3);
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(212, 163, 115, 0.3);
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2em; }
+            .container { padding: 30px 15px; }
+            .btn { padding: 12px 25px; font-size: 1em; }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to Carta Alma 84...</p>
+    <div class="container">
+        <h1>Alma 84</h1>
+        <p class="subtitle">☀ Bienvenido ☀</p>
+        <div class="divider"></div>
+        
+        <p>Disfruta de nuestra Carta de Verano con los mejores jamones, quesos y especialidades.</p>
+        
+        <div class="button-group">
+            <a href="https://jesuste93.github.io/carta_alma84.html" class="btn btn-primary">
+                📋 Ver Carta de Verano
+            </a>
+            <a href="https://github.com/Jesuste93/.github.io" class="btn btn-secondary" target="_blank">
+                🔗 Ver Repositorio
+            </a>
+        </div>
+        
+        <footer>
+            <p>Alma 84 - Bar de Verano | Abril 2026</p>
+        </footer>
+    </div>
 </body>
 </html>
